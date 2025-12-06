@@ -282,28 +282,28 @@ export default function AdminUsers() {
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">
-                    <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-2 flex items-center gap-3">
-                        <FiUsers size={40} className="text-indigo-600" />
+                    <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+                        <FiUsers size={32} className="text-blue-400" />
                         Quản lý Nhân viên
                     </h1>
-                    <p className="text-gray-600 text-lg">
+                    <p className="text-gray-400 text-lg">
                         Quản lý tài khoản và phân quyền camera cho nhân viên
                     </p>
                 </div>
 
                 <div className={`transition-all duration-300 ${selectedUser ? "grid grid-cols-1 lg:grid-cols-2 gap-6" : ""}`}>
                     {/* Danh sách nhân viên */}
-                    <div className={`backdrop-blur-xl bg-white/80 border border-white/60 rounded-2xl shadow-xl overflow-hidden ${selectedUser ? "" : "col-span-2"}`}>
+                    <div className={`bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl overflow-hidden ${selectedUser ? "" : "col-span-2"}`}>
                         {/* Table Header */}
-                        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                            <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                                <FiUsers size={24} className="text-indigo-600" />
+                        <div className="bg-[#252525] px-6 py-4 border-b border-[#333333] flex justify-between items-center">
+                            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                                <FiUsers size={20} className="text-blue-400" />
                                 Danh sách nhân viên ({users.length})
                             </h2>
                             <button
                                 onClick={handleCreateUser}
                                 disabled={loading}
-                                className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 font-medium disabled:opacity-50"
+                                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium disabled:opacity-50"
                             >
                                 <FiUserPlus size={18} />
                                 Tạo nhân viên
@@ -314,52 +314,33 @@ export default function AdminUsers() {
                         <div className="overflow-x-auto">
                             <table className="w-full">
                                 <thead>
-                                    <tr className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
-                                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Tên</th>
-                                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Email</th>
-                                        <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700">Hành động</th>
+                                    <tr className="bg-[#252525] border-b border-[#333333]">
+                                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-400">Tên</th>
+                                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-400">Email</th>
+                                        <th className="px-6 py-4 text-center text-sm font-semibold text-gray-400">Hành động</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-gray-200">
+                                <tbody className="divide-y divide-[#2a2a2a]">
                                     {users.map((u) => (
                                         <tr
                                             key={u.id}
-                                            className={`group hover:bg-indigo-50/50 cursor-pointer transition-all duration-200 ${selectedUser?.id === u.id ? "bg-indigo-100/70" : ""
-                                                }`}
+                                            className={`group hover:bg-[#252525] cursor-pointer transition ${selectedUser?.id === u.id ? "bg-blue-500/20" : ""}`}
                                         >
-                                            <td
-                                                onClick={() => handleSelectUser(u)}
-                                                className="px-6 py-4 text-gray-800 font-medium"
-                                            >
+                                            <td onClick={() => handleSelectUser(u)} className="px-6 py-4 text-white font-medium">
                                                 {u.name}
                                             </td>
-                                            <td
-                                                onClick={() => handleSelectUser(u)}
-                                                className="px-6 py-4 text-gray-600"
-                                            >
+                                            <td onClick={() => handleSelectUser(u)} className="px-6 py-4 text-gray-400">
                                                 {u.email}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <div className="flex items-center justify-center gap-2">
-                                                    <button
-                                                        onClick={() => handleEditUser(u)}
-                                                        className="p-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors shadow-md hover:shadow-lg"
-                                                        title="Sửa"
-                                                    >
+                                                    <button onClick={() => handleEditUser(u)} className="p-2 bg-yellow-500/20 text-yellow-400 rounded-lg hover:bg-yellow-500/30 transition" title="Sửa">
                                                         <FiEdit2 size={16} />
                                                     </button>
-                                                    <button
-                                                        onClick={() => handleResetPassword(u.id)}
-                                                        className="p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors shadow-md hover:shadow-lg"
-                                                        title="Reset mật khẩu"
-                                                    >
+                                                    <button onClick={() => handleResetPassword(u.id)} className="p-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition" title="Reset mật khẩu">
                                                         <FiKey size={16} />
                                                     </button>
-                                                    <button
-                                                        onClick={() => handleDeleteUser(u.id)}
-                                                        className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-md hover:shadow-lg"
-                                                        title="Xóa"
-                                                    >
+                                                    <button onClick={() => handleDeleteUser(u.id)} className="p-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition" title="Xóa">
                                                         <FiTrash2 size={16} />
                                                     </button>
                                                 </div>
@@ -378,7 +359,7 @@ export default function AdminUsers() {
 
                             {loading && (
                                 <div className="py-12 text-center">
-                                    <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-indigo-600 mx-auto"></div>
+                                    <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-500 mx-auto"></div>
                                     <p className="text-gray-500 mt-3">Đang tải...</p>
                                 </div>
                             )}
@@ -387,17 +368,17 @@ export default function AdminUsers() {
 
                     {/* Chi tiết user */}
                     {selectedUser && (
-                        <div className="backdrop-blur-xl bg-white/80 border border-white/60 rounded-2xl shadow-xl overflow-hidden animate-fadeIn">
+                        <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl overflow-hidden animate-fadeIn">
                             {/* Header */}
-                            <div className="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-5 text-white">
+                            <div className="bg-blue-500/20 px-6 py-5 border-b border-blue-500/30">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <h2 className="text-2xl font-bold mb-1">{selectedUser.name}</h2>
-                                        <p className="text-purple-100 text-sm">{selectedUser.email}</p>
+                                        <h2 className="text-xl font-bold text-white mb-1">{selectedUser.name}</h2>
+                                        <p className="text-gray-400 text-sm">{selectedUser.email}</p>
                                     </div>
                                     <button
                                         onClick={() => setSelectedUser(null)}
-                                        className="p-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors"
+                                        className="p-2 bg-white/10 hover:bg-white/20 rounded-lg transition text-gray-400 hover:text-white"
                                     >
                                         <FiX size={20} />
                                     </button>
@@ -455,8 +436,8 @@ export default function AdminUsers() {
                                                 <label
                                                     key={cam.id}
                                                     className={`flex items-center gap-3 p-3 rounded-lg transition-all ${isDisabled
-                                                            ? "opacity-40 cursor-not-allowed bg-gray-100"
-                                                            : "cursor-pointer hover:bg-white hover:shadow-md bg-white/50"
+                                                        ? "opacity-40 cursor-not-allowed bg-gray-100"
+                                                        : "cursor-pointer hover:bg-white hover:shadow-md bg-white/50"
                                                         }`}
                                                 >
                                                     <input

@@ -56,7 +56,7 @@ export default function Cameras() {
   if (loading)
     return (
       <Layout>
-        <div className="flex justify-center items-center h-[70vh] text-gray-500">
+        <div className="flex justify-center items-center h-[70vh] text-gray-400">
           Đang tải danh sách camera...
         </div>
       </Layout>
@@ -67,16 +67,16 @@ export default function Cameras() {
       <div className="flex h-[85vh] gap-6">
 
         {/* MAIN VIEW */}
-        <div className="flex-1 backdrop-blur-xl bg-white/40 border border-white/60 rounded-3xl p-6 shadow-2xl flex flex-col">
+        <div className="flex-1 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 flex flex-col">
 
           <div className="flex justify-end gap-3 mb-4">
             {[1, 4, 9].map((n) => (
               <button
                 key={n}
                 onClick={() => handleSelectLayout(n)}
-                className={`group px-5 py-2.5 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCount === n
-                  ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-blue-500/30 scale-105"
-                  : "backdrop-blur-md bg-white/80 border border-white/80 text-gray-700 hover:bg-white hover:border-blue-200"
+                className={`px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 ${selectedCount === n
+                  ? "bg-blue-600 text-white"
+                  : "bg-[#252525] border border-[#333333] text-gray-300 hover:bg-[#2a2a2a]"
                   }`}
               >
                 <span className="text-lg">{n === 1 ? "1️⃣" : n === 4 ? "2️⃣×2️⃣" : "3️⃣×3️⃣"}</span>
@@ -93,7 +93,7 @@ export default function Cameras() {
               }`}
           >
             {selectedCameras.length === 0 ? (
-              <div className="flex flex-col items-center justify-center text-gray-400">
+              <div className="flex flex-col items-center justify-center text-gray-500">
                 <svg className="w-20 h-20 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
@@ -108,8 +108,8 @@ export default function Cameras() {
         </div>
 
         {/* SIDE LIST */}
-        <aside className="w-72 backdrop-blur-xl bg-white/70 border border-white/60 shadow-2xl rounded-3xl p-6 overflow-y-auto">
-          <h2 className="text-xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent flex items-center gap-2">
+        <aside className="w-72 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 overflow-y-auto">
+          <h2 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
             📷 Danh sách Camera
           </h2>
 
@@ -121,23 +121,23 @@ export default function Cameras() {
                 <li
                   key={cam.id}
                   onClick={() => handleSelectCamera(cam)}
-                  className={`cursor-pointer backdrop-blur-md rounded-xl p-4 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1 ${selectedCameras.find((c) => c.id === cam.id)
-                    ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white border-2 border-blue-300 shadow-blue-500/30 scale-[1.02]"
-                    : "bg-white/90 border border-gray-200 hover:bg-white hover:border-blue-200"
+                  className={`cursor-pointer rounded-lg p-4 transition-all duration-300 ${selectedCameras.find((c) => c.id === cam.id)
+                    ? "bg-blue-600 text-white border border-blue-500"
+                    : "bg-[#252525] border border-[#333333] hover:bg-[#2a2a2a] text-gray-300"
                     }`}
                 >
                   <div
                     className={`font-semibold ${selectedCameras.find((c) => c.id === cam.id)
                       ? "text-white"
-                      : "text-gray-800"
+                      : "text-gray-200"
                       }`}
                   >
                     {cam.cameraName}
                   </div>
                   <div
                     className={`text-sm mt-1 ${selectedCameras.find((c) => c.id === cam.id)
-                      ? "text-blue-100"
-                      : "text-gray-600"
+                      ? "text-blue-200"
+                      : "text-gray-500"
                       }`}
                   >
                     📍 {cam.location}
