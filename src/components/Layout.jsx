@@ -108,18 +108,7 @@ export default function Layout({ children }) {
     }, [currentUser, setUnreadCount]);
 
     return (
-        <div className="relative min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 overflow-hidden">
-            {/* Background Image - Applied globally */}
-            <div
-                className="fixed inset-0 z-0 opacity-30"
-                style={{
-                    backgroundImage: 'url(/dashboard-bg.png)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundAttachment: 'fixed'
-                }}
-            />
-
+        <div className="relative min-h-screen flex flex-col bg-[#0f0f0f] overflow-hidden">
             {isFlashing && (
                 <div
                     className="absolute inset-0 z-50 pointer-events-none"
@@ -142,9 +131,9 @@ export default function Layout({ children }) {
             </main>
 
             {/* Footer */}
-            <footer className="bg-white/80 backdrop-blur-md border-t border-gray-200 py-6 mt-auto z-10 relative">
+            <footer className="bg-[#1a1a1a] border-t border-[#2a2a2a] py-6 mt-auto z-10 relative">
                 <div className="container mx-auto px-6 text-center">
-                    <p className="text-gray-600 text-sm font-medium">
+                    <p className="text-gray-500 text-sm font-medium">
                         © 2025 RabbitFire System.
                     </p>
 

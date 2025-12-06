@@ -80,10 +80,7 @@ export default function Navbar() {
     return (
         <>
             <nav
-                className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled
-                    ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50"
-                    : "bg-white/90 backdrop-blur-md shadow-md border-b border-gray-200"
-                    }`}
+                className={`sticky top-0 z-50 transition-all duration-300 bg-[#1a1a1a] border-b border-[#2a2a2a] ${isScrolled ? "shadow-lg shadow-black/20" : ""}`}
             >
                 <div className="container mx-auto flex justify-between items-center px-4 sm:px-6 py-3">
                     {/* Logo */}
@@ -97,9 +94,8 @@ export default function Navbar() {
                                 alt="RabbitFire Logo"
                                 className="h-10 w-10 object-contain transform group-hover:scale-110 transition-transform duration-300"
                             />
-                            <div className="absolute inset-0 bg-orange-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300" />
                         </div>
-                        <span className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent group-hover:from-pink-500 group-hover:via-red-500 group-hover:to-orange-500 transition-all duration-500 bg-[length:200%_100%] group-hover:bg-right bg-left">
+                        <span className="text-white group-hover:text-blue-400 transition-colors duration-300">
                             RabbitFire
                         </span>
                     </Link>
@@ -121,9 +117,9 @@ export default function Navbar() {
                             <div className="relative" ref={dropdownRef}>
                                 <button
                                     onClick={() => setIsAdminMenuOpen(!isAdminMenuOpen)}
-                                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium transition-all duration-300 ${location.pathname.startsWith("/admin")
-                                        ? "bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/30"
-                                        : "text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700"
+                                    className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all duration-300 ${location.pathname.startsWith("/admin")
+                                        ? "bg-blue-600 text-white"
+                                        : "text-gray-300 hover:bg-[#252525] hover:text-white"
                                         }`}
                                 >
                                     <FiSettings size={18} />
@@ -146,31 +142,31 @@ export default function Navbar() {
 
                                 {/* Dropdown Menu */}
                                 {isAdminMenuOpen && (
-                                    <div className="absolute top-full right-0 mt-2 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/50 overflow-hidden animate-slideDown">
+                                    <div className="absolute top-full right-0 mt-2 w-56 bg-[#252525] border border-[#333333] rounded-lg shadow-xl overflow-hidden animate-slideDown">
                                         <Link
                                             to="/admin/users"
                                             onClick={() => setIsAdminMenuOpen(false)}
-                                            className="flex items-center gap-3 px-5 py-3.5 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 transition-all duration-200 group"
+                                            className="flex items-center gap-3 px-5 py-3.5 hover:bg-[#2a2a2a] transition-all duration-200 group"
                                         >
                                             <FiUsers
                                                 size={20}
-                                                className="text-indigo-600 group-hover:scale-110 transition-transform"
+                                                className="text-blue-400 group-hover:scale-110 transition-transform"
                                             />
-                                            <span className="text-gray-700 font-medium group-hover:text-indigo-700">
+                                            <span className="text-gray-300 font-medium group-hover:text-white">
                                                 Quản lý Users
                                             </span>
                                         </Link>
-                                        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+                                        <div className="h-px bg-[#333333]" />
                                         <Link
                                             to="/admin/cameras"
                                             onClick={() => setIsAdminMenuOpen(false)}
-                                            className="flex items-center gap-3 px-5 py-3.5 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 transition-all duration-200 group"
+                                            className="flex items-center gap-3 px-5 py-3.5 hover:bg-[#2a2a2a] transition-all duration-200 group"
                                         >
                                             <FiVideo
                                                 size={20}
-                                                className="text-indigo-600 group-hover:scale-110 transition-transform"
+                                                className="text-blue-400 group-hover:scale-110 transition-transform"
                                             />
-                                            <span className="text-gray-700 font-medium group-hover:text-indigo-700">
+                                            <span className="text-gray-300 font-medium group-hover:text-white">
                                                 Quản lý Cameras
                                             </span>
                                         </Link>
@@ -185,30 +181,29 @@ export default function Navbar() {
                         {/* Notifications */}
                         <Link
                             to="/notifications"
-                            className={`relative p-2.5 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-300 group ${notificationRing ? "animate-ring" : ""
+                            className={`relative p-2.5 rounded-lg hover:bg-[#252525] transition-all duration-300 group ${notificationRing ? "animate-ring" : ""
                                 }`}
                         >
                             <FiBell
                                 size={22}
-                                className="text-gray-700 group-hover:text-blue-600 transition-colors"
+                                className="text-gray-300 group-hover:text-white transition-colors"
                             />
                             {unreadCount > 0 && (
                                 <>
-                                    <span className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold rounded-full h-6 min-w-[24px] px-1.5 flex items-center justify-center shadow-lg animate-pulseGlow">
+                                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-6 min-w-[24px] px-1.5 flex items-center justify-center shadow-lg">
                                         {unreadCount > 9 ? "9+" : unreadCount}
                                     </span>
-                                    <span className="absolute -top-1 -right-1 h-6 w-6 bg-red-500 rounded-full opacity-30 animate-ping" />
                                 </>
                             )}
                         </Link>
 
                         {/* User Email - Desktop Only */}
                         {currentUser && (
-                            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg border border-gray-200">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-semibold text-sm shadow-md">
+                            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-[#252525] rounded-lg border border-[#333333]">
+                                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold text-sm">
                                     {currentUser.email?.charAt(0).toUpperCase() || "U"}
                                 </div>
-                                <span className="text-sm text-gray-700 font-medium max-w-[150px] truncate">
+                                <span className="text-sm text-gray-300 font-medium max-w-[150px] truncate">
                                     {currentUser.email}
                                 </span>
                             </div>
@@ -217,7 +212,7 @@ export default function Navbar() {
                         {/* Logout - Desktop */}
                         <button
                             onClick={handleLogout}
-                            className="hidden sm:flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-red-50 to-pink-50 text-red-600 rounded-xl hover:from-red-100 hover:to-pink-100 hover:shadow-lg transition-all duration-300 font-medium group"
+                            className="hidden sm:flex items-center gap-2 px-4 py-2.5 bg-[#252525] text-red-400 rounded-lg hover:bg-red-500/20 hover:text-red-300 transition-all duration-300 font-medium group border border-[#333333]"
                         >
                             <FiLogOut
                                 size={18}
@@ -229,13 +224,13 @@ export default function Navbar() {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="lg:hidden p-2.5 rounded-xl hover:bg-gray-100 transition-colors"
+                            className="lg:hidden p-2.5 rounded-lg hover:bg-[#252525] transition-colors"
                             aria-label="Toggle menu"
                         >
                             {isMobileMenuOpen ? (
-                                <FiX size={24} className="text-gray-700" />
+                                <FiX size={24} className="text-gray-300" />
                             ) : (
-                                <FiMenu size={24} className="text-gray-700" />
+                                <FiMenu size={24} className="text-gray-300" />
                             )}
                         </button>
                     </div>
@@ -247,38 +242,38 @@ export default function Navbar() {
                 <>
                     {/* Backdrop */}
                     <div
-                        className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 lg:hidden animate-fadeIn"
+                        className="fixed inset-0 bg-black/50 z-40 lg:hidden animate-fadeIn"
                         onClick={() => setIsMobileMenuOpen(false)}
                     />
 
                     {/* Menu Panel */}
-                    <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white/95 backdrop-blur-xl shadow-2xl z-50 lg:hidden animate-slideIn">
+                    <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-[#1a1a1a] border-l border-[#2a2a2a] shadow-2xl z-50 lg:hidden animate-slideIn">
                         <div className="flex flex-col h-full">
                             {/* Header */}
-                            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                                <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                            <div className="flex items-center justify-between p-6 border-b border-[#2a2a2a]">
+                                <h2 className="text-xl font-bold text-white">
                                     Menu
                                 </h2>
                                 <button
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                                    className="p-2 rounded-lg hover:bg-[#252525] transition-colors"
                                 >
-                                    <FiX size={24} className="text-gray-700" />
+                                    <FiX size={24} className="text-gray-300" />
                                 </button>
                             </div>
 
                             {/* User Info */}
                             {currentUser && (
-                                <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+                                <div className="p-6 border-b border-[#2a2a2a] bg-[#252525]">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                                        <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg">
                                             {currentUser.email?.charAt(0).toUpperCase() || "U"}
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-sm text-gray-600 font-medium">
+                                            <p className="text-sm text-gray-400 font-medium">
                                                 Đăng nhập với
                                             </p>
-                                            <p className="text-gray-800 font-semibold truncate">
+                                            <p className="text-white font-semibold truncate">
                                                 {currentUser.email}
                                             </p>
                                         </div>
@@ -353,13 +348,13 @@ export default function Navbar() {
                             </div>
 
                             {/* Footer - Logout */}
-                            <div className="p-4 border-t border-gray-200">
+                            <div className="p-4 border-t border-[#2a2a2a]">
                                 <button
                                     onClick={() => {
                                         handleLogout();
                                         setIsMobileMenuOpen(false);
                                     }}
-                                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl hover:shadow-lg transition-all duration-300 font-medium"
+                                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-all duration-300 font-medium"
                                 >
                                     <FiLogOut size={20} />
                                     <span>Đăng xuất</span>
@@ -378,16 +373,13 @@ function NavLink({ to, icon: Icon, active, children }) {
     return (
         <Link
             to={to}
-            className={`group relative flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium transition-all duration-300 ${active
-                ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/30"
-                : "text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-700"
+            className={`group relative flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all duration-300 ${active
+                ? "bg-blue-600 text-white"
+                : "text-gray-300 hover:bg-[#252525] hover:text-white"
                 }`}
         >
             <Icon size={18} className={`transition-transform ${active ? "" : "group-hover:scale-110"}`} />
             <span>{children}</span>
-            {active && (
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-white rounded-full" />
-            )}
         </Link>
     );
 }
@@ -398,9 +390,9 @@ function MobileNavLink({ to, icon: Icon, active, children, onClick, badge }) {
         <Link
             to={to}
             onClick={onClick}
-            className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-200 ${active
-                ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg"
-                : "text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-700"
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-200 ${active
+                ? "bg-blue-600 text-white"
+                : "text-gray-300 hover:bg-[#252525] hover:text-white"
                 }`}
         >
             <Icon size={20} />

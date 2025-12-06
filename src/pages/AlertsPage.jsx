@@ -231,20 +231,20 @@ export default function AlertsPage() {
                 <div className="max-w-7xl mx-auto p-6">
                     {/* Header */}
                     <div className="mb-8">
-                        <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent mb-2 flex items-center gap-3">
-                            <FiDatabase size={40} className="text-orange-500" />
+                        <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+                            <FiDatabase size={32} className="text-orange-500" />
                             Lịch sử Cảnh báo
                         </h1>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-gray-400 text-lg">
                             Tra cứu và phân tích toàn bộ lịch sử phát hiện cháy & khói
                         </p>
                     </div>
 
                     {/* Search & Filter Section */}
-                    <div className="backdrop-blur-xl bg-white/70 border border-white/60 rounded-2xl shadow-xl p-6 mb-6">
+                    <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 mb-6">
                         {/* Search Bar */}
                         <div className="mb-6">
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                            <label className="block text-sm font-semibold text-gray-300 mb-2">
                                 🔍 Tìm kiếm
                             </label>
                             <div className="relative">
@@ -253,17 +253,17 @@ export default function AlertsPage() {
                                     placeholder="Tìm theo vị trí, camera, hoặc mô tả..."
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="w-full px-6 py-3 pl-12 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/90"
+                                    className="w-full px-6 py-3 pl-12 bg-[#252525] border border-[#333333] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
-                                <svg className="w-5 h-5 absolute left-4 top-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 absolute left-4 top-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                                 {searchTerm && (
                                     <button
                                         onClick={() => setSearchTerm("")}
-                                        className="absolute right-3 top-3 p-1 hover:bg-gray-100 rounded-full"
+                                        className="absolute right-3 top-3 p-1 hover:bg-[#333333] rounded-full"
                                     >
-                                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                     </button>
@@ -273,7 +273,7 @@ export default function AlertsPage() {
 
                         {/* Quick Time Range Filter */}
                         <div className="mb-6">
-                            <label className="block text-sm font-semibold text-gray-700 mb-3">
+                            <label className="block text-sm font-semibold text-gray-300 mb-3">
                                 ⏱️ Khoảng thời gian
                             </label>
                             <div className="flex flex-wrap gap-2">
@@ -288,10 +288,10 @@ export default function AlertsPage() {
                                     <button
                                         key={btn.value}
                                         onClick={() => setTimeRange(btn.value)}
-                                        className={`px - 4 py - 2 rounded - xl text - sm font - medium transition - all transform ${timeRange === btn.value
-                                            ? "bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg scale-105"
-                                            : "backdrop-blur-md bg-white/90 border border-gray-200 text-gray-700 hover:bg-white hover:shadow-md"
-                                            } `}
+                                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${timeRange === btn.value
+                                            ? "bg-blue-600 text-white"
+                                            : "bg-[#252525] border border-[#333333] text-gray-300 hover:bg-[#2a2a2a]"
+                                            }`}
                                     >
                                         {btn.label}
                                     </button>
@@ -300,42 +300,42 @@ export default function AlertsPage() {
                         </div>
 
                         {/* Advanced Filters Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-gray-200">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-[#333333]">
                             {/* From Date */}
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-gray-300 mb-2">
                                     📅 Từ ngày
                                 </label>
                                 <input
                                     type="date"
                                     value={startDate}
                                     onChange={(e) => setStartDate(e.target.value)}
-                                    className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/90"
+                                    className="w-full px-4 py-2.5 bg-[#252525] border border-[#333333] rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
 
                             {/* To Date */}
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-gray-300 mb-2">
                                     📅 Đến ngày
                                 </label>
                                 <input
                                     type="date"
                                     value={endDate}
                                     onChange={(e) => setEndDate(e.target.value)}
-                                    className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/90"
+                                    className="w-full px-4 py-2.5 bg-[#252525] border border-[#333333] rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
 
                             {/* Type Filter */}
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-gray-300 mb-2">
                                     🔥 Loại cảnh báo
                                 </label>
                                 <select
                                     value={typeFilter}
                                     onChange={(e) => setTypeFilter(e.target.value)}
-                                    className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white/90"
+                                    className="w-full px-4 py-2.5 bg-[#252525] border border-[#333333] rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
                                     <option value="all">Tất cả loại</option>
                                     <option value="fire">🔥 Cháy</option>
@@ -345,13 +345,13 @@ export default function AlertsPage() {
 
                             {/* Location Filter */}
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-gray-300 mb-2">
                                     📍 Khu vực
                                 </label>
                                 <select
                                     value={locationFilter}
                                     onChange={(e) => setLocationFilter(e.target.value)}
-                                    className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white/90"
+                                    className="w-full px-4 py-2.5 bg-[#252525] border border-[#333333] rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
                                     <option value="all">Tất cả khu vực</option>
                                     {[...new Set(alerts.map((a) => a.location || "Không xác định"))].map(
@@ -366,13 +366,13 @@ export default function AlertsPage() {
                         </div>
 
                         {/* Results Summary */}
-                        <div className="mt-6 pt-6 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4">
-                            <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <div className="mt-6 pt-6 border-t border-[#333333] flex flex-wrap items-center justify-between gap-4">
+                            <div className="flex items-center gap-2 text-sm text-gray-400">
                                 <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                 </svg>
                                 <span>
-                                    Tìm thấy <span className="font-bold text-orange-600">{filteredAlerts.length}</span> / {alerts.length} cảnh báo
+                                    Tìm thấy <span className="font-bold text-orange-400">{filteredAlerts.length}</span> / {alerts.length} cảnh báo
                                 </span>
                             </div>
 
@@ -386,7 +386,7 @@ export default function AlertsPage() {
                                         setStartDate("");
                                         setEndDate("");
                                     }}
-                                    className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition flex items-center gap-2"
+                                    className="px-4 py-2 text-sm bg-[#252525] hover:bg-[#2a2a2a] text-gray-300 rounded-lg transition flex items-center gap-2"
                                 >
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -400,17 +400,17 @@ export default function AlertsPage() {
                     {/* Loading State */}
                     {loading ? (
                         <div className="flex flex-col items-center justify-center py-20">
-                            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-orange-500 mb-4"></div>
-                            <p className="text-gray-500 font-medium">Đang tải dữ liệu...</p>
+                            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-500 mb-4"></div>
+                            <p className="text-gray-400 font-medium">Đang tải dữ liệu...</p>
                         </div>
                     ) : filteredAlerts.length === 0 ? (
                         /* Empty State */
-                        <div className="backdrop-blur-xl bg-white/70 border border-white/60 rounded-2xl shadow-xl p-12">
+                        <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-12">
                             <div className="flex flex-col items-center text-center">
-                                <div className="w-24 h-24 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mb-4">
-                                    <FiAlertTriangle size={48} className="text-gray-400" />
+                                <div className="w-24 h-24 bg-[#252525] rounded-full flex items-center justify-center mb-4">
+                                    <FiAlertTriangle size={48} className="text-gray-500" />
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                                <h3 className="text-xl font-bold text-white mb-2">
                                     Không tìm thấy cảnh báo
                                 </h3>
                                 <p className="text-gray-500">
@@ -422,10 +422,10 @@ export default function AlertsPage() {
                         </div>
                     ) : (
                         /* Timeline List View */
-                        <div className="backdrop-blur-xl bg-white/70 border border-white/60 rounded-2xl shadow-xl overflow-hidden">
+                        <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl overflow-hidden">
                             {/* Table Header */}
-                            <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-4 border-b border-gray-200">
-                                <div className="grid grid-cols-12 gap-4 text-sm font-semibold text-gray-600">
+                            <div className="bg-[#252525] px-6 py-4 border-b border-[#333333]">
+                                <div className="grid grid-cols-12 gap-4 text-sm font-semibold text-gray-400">
                                     <div className="col-span-1">Loại</div>
                                     <div className="col-span-4">Thông tin</div>
                                     <div className="col-span-3">Khu vực</div>
@@ -435,11 +435,11 @@ export default function AlertsPage() {
                             </div>
 
                             {/* Timeline List */}
-                            <div className="divide-y divide-gray-200">
+                            <div className="divide-y divide-[#2a2a2a]">
                                 {filteredAlerts.map((a, index) => (
                                     <div
                                         key={a.id}
-                                        className="group hover:bg-blue-50/50 transition-colors cursor-pointer"
+                                        className="group hover:bg-[#252525] transition-colors cursor-pointer"
                                         onClick={() => {
                                             setSelectedAlert(a);
                                             setViewMode("detail");
@@ -448,37 +448,37 @@ export default function AlertsPage() {
                                         <div className="grid grid-cols-12 gap-4 px-6 py-4 items-center">
                                             {/* Type Icon */}
                                             <div className="col-span-1">
-                                                <div className={`w - 10 h - 10 rounded - lg flex items - center justify - center ${a.type === "fire"
-                                                    ? "bg-gradient-to-br from-red-500 to-orange-500"
-                                                    : "bg-gradient-to-br from-gray-500 to-gray-600"
-                                                    } `}>
-                                                    <FiAlertTriangle className="text-white" size={20} />
+                                                <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${a.type === "fire"
+                                                    ? "bg-red-500/20"
+                                                    : "bg-gray-500/20"
+                                                    }`}>
+                                                    <FiAlertTriangle className={a.type === "fire" ? "text-red-400" : "text-gray-400"} size={20} />
                                                 </div>
                                             </div>
 
                                             {/* Info */}
                                             <div className="col-span-4">
                                                 <div className="flex items-center gap-2 mb-1">
-                                                    <span className={`px - 2 py - 0.5 rounded - full text - xs font - bold ${a.type === "fire"
-                                                        ? "bg-red-100 text-red-700"
-                                                        : "bg-gray-100 text-gray-700"
-                                                        } `}>
+                                                    <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${a.type === "fire"
+                                                        ? "bg-red-500/20 text-red-400"
+                                                        : "bg-gray-500/20 text-gray-400"
+                                                        }`}>
                                                         {a.type === "fire" ? "Cháy" : "Khói"}
                                                     </span>
                                                     <span className="text-xs text-gray-500">#{index + 1}</span>
                                                 </div>
-                                                <div className="flex items-center gap-2 text-sm text-gray-600">
+                                                <div className="flex items-center gap-2 text-sm text-gray-400">
                                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                                     </svg>
-                                                    <span className="font-medium">{a.cameraName || a.cameraId}</span>
+                                                    <span className="font-medium text-gray-300">{a.cameraName || a.cameraId}</span>
                                                 </div>
                                             </div>
 
                                             {/* Location */}
                                             <div className="col-span-3">
-                                                <div className="flex items-center gap-2 text-gray-700">
-                                                    <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <div className="flex items-center gap-2 text-gray-300">
+                                                    <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     </svg>
@@ -487,7 +487,7 @@ export default function AlertsPage() {
                                             </div>
 
                                             {/* Time */}
-                                            <div className="col-span-3 text-sm text-gray-600">
+                                            <div className="col-span-3 text-sm text-gray-400">
                                                 <div className="flex items-center gap-2">
                                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -499,7 +499,7 @@ export default function AlertsPage() {
                                             {/* Action */}
                                             <div className="col-span-1 text-right">
                                                 <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                                                    <svg className="w-5 h-5 text-orange-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <svg className="w-5 h-5 text-blue-400 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                                     </svg>
                                                 </div>
@@ -515,182 +515,83 @@ export default function AlertsPage() {
         );
     }
 
-    // ================================
-    // 🔹 DETAIL VIEW
-    // ================================
-    if (viewMode === "detail" && selectedAlert) {
-        return (
-            <Layout>
-                <div className="max-w-4xl mx-auto p-6">
-                    {/* Back Button */}
-                    <button
-                        onClick={() => setViewMode("list")}
-                        className="mb-6 flex items-center gap-2 px-4 py-2 backdrop-blur-md bg-white/70 border border-white/60 rounded-xl hover:bg-white transition-all shadow-md hover:shadow-lg"
-                    >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                        </svg>
-                        <span className="font-medium">Quay lại danh sách</span>
-                    </button>
+    // DETAIL VIEW
+    return (
+        <Layout>
+            <div className="max-w-5xl mx-auto p-6">
+                {/* Back Button */}
+                <button
+                    onClick={() => setViewMode("list")}
+                    className="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+                >
+                    <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Quay lại danh sách
+                </button>
 
-                    {/* Detail Card */}
-                    <div className="backdrop-blur-xl bg-white/80 border border-white/60 rounded-3xl shadow-2xl overflow-hidden">
-                        {/* Header with gradient */}
-                        <div className={`p - 6 ${selectedAlert.type === "fire"
-                            ? "bg-gradient-to-r from-red-500 to-orange-500"
-                            : "bg-gradient-to-r from-gray-500 to-gray-600"
-                            } `}>
-                            <div className="flex items-center justify-between text-white">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-                                        <FiAlertTriangle size={32} />
-                                    </div>
-                                    <div>
-                                        <h2 className="text-2xl font-bold">
-                                            Chi tiết cảnh báo
-                                        </h2>
-                                        <p className="text-sm opacity-90">
-                                            {selectedAlert.type === "fire" ? "🔥 Phát hiện cháy" : "💨 Phát hiện khói"}
-                                        </p>
-                                    </div>
+                {/* Main Content */}
+                <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl overflow-hidden">
+                    {/* Header */}
+                    <div className={`px-8 py-6 ${selectedAlert?.type === "fire"
+                        ? "bg-red-500/20 border-b border-red-500/30"
+                        : "bg-gray-500/20 border-b border-gray-500/30"
+                        }`}>
+                        <div className="flex items-start justify-between">
+                            <div className="flex items-center gap-4">
+                                <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${selectedAlert?.type === "fire"
+                                    ? "bg-red-500/30"
+                                    : "bg-gray-500/30"
+                                    }`}>
+                                    <FiAlertTriangle className={selectedAlert?.type === "fire" ? "text-red-400" : "text-gray-400"} size={32} />
                                 </div>
-
-                                <div className="text-right">
-                                    <div className="text-sm opacity-90">ID</div>
-                                    <div className="font-mono text-xs">{selectedAlert.id?.substring(0, 8)}...</div>
+                                <div>
+                                    <span className={`px-3 py-1 rounded-full text-sm font-bold ${selectedAlert?.type === "fire"
+                                        ? "bg-red-500/30 text-red-300"
+                                        : "bg-gray-500/30 text-gray-300"
+                                        }`}>
+                                        {selectedAlert?.type === "fire" ? "🔥 Cháy" : "💨 Khói"}
+                                    </span>
+                                    <h1 className="text-2xl font-bold text-white mt-2">Chi tiết Cảnh báo</h1>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* Image */}
-                        {selectedAlert.imageUrl && (
-                            <div className="relative group">
-                                <img
-                                    src={selectedAlert.imageUrl}
-                                    alt="alert"
-                                    className="w-full h-96 object-cover"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                                    <p className="text-white text-sm">Click để phóng to</p>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Details */}
-                        <div className="p-8 space-y-6">
-                            {/* Type */}
-                            <div className="flex items-start gap-4">
-                                <div className={`w - 12 h - 12 rounded - xl flex items - center justify - center ${selectedAlert.type === "fire"
-                                    ? "bg-gradient-to-br from-red-100 to-orange-100"
-                                    : "bg-gradient-to-br from-gray-100 to-gray-200"
-                                    } `}>
-                                    <FiAlertTriangle className={
-                                        selectedAlert.type === "fire" ? "text-red-600" : "text-gray-600"
-                                    } size={24} />
-                                </div>
-                                <div className="flex-1">
-                                    <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">
-                                        Loại cảnh báo
-                                    </div>
-                                    <div className="text-lg font-bold text-gray-800">
-                                        {selectedAlert.type === "fire" ? "🔥 Cháy" : "💨 Khói"}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Timestamp */}
-                            <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
-                                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">
-                                        Thời gian
-                                    </div>
-                                    <div className="text-lg font-bold text-gray-800">
-                                        {formatTime(selectedAlert.timestamp)}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Location */}
-                            <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center">
-                                    <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">
-                                        Vị trí
-                                    </div>
-                                    <div className="text-lg font-bold text-gray-800">
-                                        {selectedAlert.location || "Không xác định"}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Camera */}
-                            <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
-                                    <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">
-                                        Camera
-                                    </div>
-                                    <div className="text-lg font-bold text-gray-800">
-                                        {selectedAlert.cameraName || selectedAlert.cameraId}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Status */}
-                            <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-100 to-orange-100 flex items-center justify-center">
-                                    <FiCheckSquare className="text-yellow-600" size={24} />
-                                </div>
-                                <div className="flex-1">
-                                    <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">
-                                        Trạng thái
-                                    </div>
-                                    <div className="text-lg font-bold text-gray-800 capitalize">
-                                        {selectedAlert.status || "active"}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Footer Actions */}
-                        <div className="px-8 py-6 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
-                            <button
-                                onClick={() => setViewMode("list")}
-                                className="px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all"
-                            >
-                                Đóng
-                            </button>
-
-                            {selectedAlert.imageUrl && (
-                                <a
-                                    href={selectedAlert.imageUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl font-semibold hover:shadow-xl transition-all"
-                                >
-                                    Xem ảnh gốc
-                                </a>
-                            )}
+                            <p className="text-sm text-gray-400">ID: {selectedAlert?.id?.slice(0, 8)}...</p>
                         </div>
                     </div>
-                </div>
-            </Layout>
-        );
-    }
 
-    return null;
+                    {/* Content */}
+                    <div className="p-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div className="bg-[#252525] border border-[#333333] rounded-lg p-5">
+                                <p className="text-sm text-gray-400 mb-2">📹 Camera</p>
+                                <p className="font-semibold text-white">{selectedAlert?.cameraName || selectedAlert?.cameraId}</p>
+                            </div>
+                            <div className="bg-[#252525] border border-[#333333] rounded-lg p-5">
+                                <p className="text-sm text-gray-400 mb-2">📍 Vị trí</p>
+                                <p className="font-semibold text-white">{selectedAlert?.location || "Không xác định"}</p>
+                            </div>
+                            <div className="bg-[#252525] border border-[#333333] rounded-lg p-5">
+                                <p className="text-sm text-gray-400 mb-2">🕐 Thời gian</p>
+                                <p className="font-semibold text-white">{formatTime(selectedAlert?.timestamp)}</p>
+                            </div>
+                            <div className="bg-[#252525] border border-[#333333] rounded-lg p-5">
+                                <p className="text-sm text-gray-400 mb-2">📊 Độ tin cậy</p>
+                                <p className="font-semibold text-white">
+                                    {selectedAlert?.confidence ? `${(selectedAlert.confidence * 100).toFixed(1)}%` : "N/A"}
+                                </p>
+                            </div>
+                        </div>
+
+                        {selectedAlert?.imageUrl && (
+                            <div className="mb-8">
+                                <h3 className="text-lg font-bold text-white mb-4">🖼️ Hình ảnh phát hiện</h3>
+                                <img src={selectedAlert.imageUrl} alt="Alert" className="w-full rounded-lg border border-[#333333]" />
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </Layout>
+    );
 }
+

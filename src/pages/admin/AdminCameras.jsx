@@ -208,17 +208,17 @@ export default function AdminCameras() {
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="mb-8 text-center">
-                    <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mb-3 flex items-center justify-center gap-3">
-                        <FiVideo size={40} className="text-blue-600" />
+                    <h1 className="text-3xl font-bold text-white mb-3 flex items-center justify-center gap-3">
+                        <FiVideo size={32} className="text-blue-400" />
                         Quản lý Camera
                     </h1>
-                    <p className="text-gray-600 text-lg">
+                    <p className="text-gray-400 text-lg">
                         Quản lý camera giám sát của hệ thống
                     </p>
                 </div>
 
                 {/* Toolbar */}
-                <div className="backdrop-blur-xl bg-white/70 border border-white/60 rounded-2xl shadow-xl p-6 mb-6">
+                <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 mb-6">
                     <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
                         {/* Search */}
                         <div className="relative flex-1 w-full md:w-auto">
@@ -227,18 +227,16 @@ export default function AdminCameras() {
                                 placeholder="Tìm kiếm camera..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full px-4 py-3 pl-10 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+                                className="w-full px-4 py-3 pl-10 bg-[#252525] border border-[#333333] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
-                            <span className="absolute left-3 top-3.5 text-gray-400">
-                                🔍
-                            </span>
+                            <span className="absolute left-3 top-3.5 text-gray-500">🔍</span>
                         </div>
 
                         {/* Filter */}
                         <select
                             value={filterStatus}
                             onChange={(e) => setFilterStatus(e.target.value)}
-                            className="px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/80 backdrop-blur-sm"
+                            className="px-4 py-3 bg-[#252525] border border-[#333333] rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             <option value="all">Tất cả trạng thái</option>
                             <option value="active">Hoạt động</option>
@@ -248,7 +246,7 @@ export default function AdminCameras() {
                         {/* Add button */}
                         <button
                             onClick={handleAdd}
-                            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
+                            className="flex items-center gap-2 px-5 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition"
                         >
                             <FiPlus size={20} />
                             Thêm Camera
@@ -257,106 +255,60 @@ export default function AdminCameras() {
                 </div>
 
                 {/* Table */}
-                <div className="backdrop-blur-xl bg-white/70 border border-white/60 rounded-2xl shadow-xl overflow-hidden">
+                <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl overflow-hidden">
                     {loading ? (
                         <div className="flex justify-center items-center h-64 text-gray-500">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
                         </div>
                     ) : filteredCameras.length === 0 ? (
-                        <div className="flex flex-col justify-center items-center h-64 text-gray-400">
-                            <svg
-                                className="w-16 h-16 mb-4"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
-                                />
+                        <div className="flex flex-col justify-center items-center h-64 text-gray-500">
+                            <svg className="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                             </svg>
                             <p className="text-lg">Không tìm thấy camera nào</p>
                         </div>
                     ) : (
                         <div className="overflow-x-auto">
-                            <table className="min-w-full divide-y divide-gray-200">
-                                <thead className="bg-gradient-to-r from-indigo-50 to-blue-50">
+                            <table className="min-w-full">
+                                <thead className="bg-[#252525] border-b border-[#333333]">
                                     <tr>
-                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                                            Tên Camera
-                                        </th>
-                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                                            Vị trí
-                                        </th>
-                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                                            URL Stream
-                                        </th>
-                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                                            Trạng thái
-                                        </th>
-                                        <th className="px-6 py-4 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                                            Hành động
-                                        </th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase">Tên Camera</th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase">Vị trí</th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase">URL Stream</th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase">Trạng thái</th>
+                                        <th className="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase">Hành động</th>
                                     </tr>
                                 </thead>
-                                <tbody className="bg-white divide-y divide-gray-200">
+                                <tbody className="divide-y divide-[#2a2a2a]">
                                     {filteredCameras.map((cam, idx) => (
-                                        <tr
-                                            key={cam.id}
-                                            className="hover:bg-gray-50 transition-colors"
-                                        >
+                                        <tr key={cam.id} className="hover:bg-[#252525] transition-colors">
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex items-center">
-                                                    <div className="flex-shrink-0 h-10 w-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center text-white font-bold">
+                                                    <div className="flex-shrink-0 h-10 w-10 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 font-bold">
                                                         {idx + 1}
                                                     </div>
                                                     <div className="ml-4">
-                                                        <div className="text-sm font-medium text-gray-900">
-                                                            {cam.cameraName}
-                                                        </div>
+                                                        <div className="text-sm font-medium text-white">{cam.cameraName}</div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                <div className="text-sm text-gray-700">
-                                                    📍 {cam.location}
-                                                </div>
+                                                <div className="text-sm text-gray-400">📍 {cam.location}</div>
                                             </td>
                                             <td className="px-6 py-4">
-                                                <div className="text-sm text-gray-500 max-w-xs truncate">
-                                                    {cam.streamUrl}
-                                                </div>
+                                                <div className="text-sm text-gray-500 max-w-xs truncate">{cam.streamUrl}</div>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                <span
-                                                    className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${cam.status === "active"
-                                                        ? "bg-green-100 text-green-800"
-                                                        : "bg-red-100 text-red-800"
-                                                        }`}
-                                                >
-                                                    {cam.status === "active"
-                                                        ? "🟢 Hoạt động"
-                                                        : "🔴 Không hoạt động"}
+                                                <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${cam.status === "active" ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}`}>
+                                                    {cam.status === "active" ? "🟢 Hoạt động" : "🔴 Không hoạt động"}
                                                 </span>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <div className="flex items-center justify-end gap-2">
-                                                    <button
-                                                        onClick={() => handleEdit(cam)}
-                                                        className="p-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-all shadow-md hover:shadow-lg"
-                                                        title="Sửa"
-                                                    >
+                                                    <button onClick={() => handleEdit(cam)} className="p-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition" title="Sửa">
                                                         <FiEdit2 size={16} />
                                                     </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            handleDelete(cam.id, cam.cameraName)
-                                                        }
-                                                        className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all shadow-md hover:shadow-lg"
-                                                        title="Xóa"
-                                                    >
+                                                    <button onClick={() => handleDelete(cam.id, cam.cameraName)} className="p-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition" title="Xóa">
                                                         <FiTrash2 size={16} />
                                                     </button>
                                                 </div>
